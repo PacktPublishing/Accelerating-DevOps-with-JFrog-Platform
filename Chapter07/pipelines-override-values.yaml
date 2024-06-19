@@ -1,0 +1,16 @@
+global:
+  jfrogUrlUI: https://jfrog-platform.kube-lab.xyz
+pipelines:
+  buildPlane:
+    dynamic:
+      provider:
+        k8s:
+          enabled: true
+          nodePoolName: k8s-dynamic-pool
+          nodelimit: "3"
+          cpu: "1.5"
+          memory: "4000"
+          namespace: pipelines-build
+          storageClass: standard
+          labels: "node-pool:pipelines-build-pool"
+          existingSecret: k8s-pool-kubeconfig

@@ -1,0 +1,18 @@
+artifactory:
+  ingress:
+    enabled: true
+    className: nginx
+    hosts:
+      - jfrog-platform.kube-lab.xyz
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+      kubernetes.io/tls-acme: "true"
+      ingress.kubernetes.io/force-ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/proxy-body-size: "0"
+    tls:
+      - secretName: jfrog-platform.kube-lab.xyz
+        hosts:
+          - "jfrog-platform.kube-lab.xyz"
+
+  nginx:
+    enabled: false
