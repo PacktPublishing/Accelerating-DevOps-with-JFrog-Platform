@@ -1,0 +1,18 @@
+<config version="2">
+    <chain template="cluster-file-system"/>
+  
+    <provider id="cache-fs" type="cache-fs">
+        <maxCacheSize>5e+10</maxCacheSize>
+        <cacheProviderDir>cache</cacheProviderDir>
+    </provider>
+    
+    <provider id="sharding-cluster" type="sharding-cluster">
+        <redundancy>2</redundancy>
+        <lenientLimit>2</lenientLimit>
+    </provider>
+  
+    <provider id="state-aware" type="state-aware">
+        <fileStoreDir>filestore</fileStoreDir>
+        <zone>local</zone>
+    </provider>
+</config>

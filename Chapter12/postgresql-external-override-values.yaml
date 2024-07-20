@@ -1,0 +1,16 @@
+image:
+  registry: releases-docker.jfrog.io
+  repository: bitnami/postgresql
+  tag: 13.10.0-debian-11-r14
+  debug: true
+postgresqlUsername: postgres
+postgresqlPassword: postgres
+postgresqlExtendedConf:
+  max_connections: 1000
+  max_wal_size: 1000MB
+persistence:
+  size: 500Gi
+
+initdbScriptsSecret: postgres-init-scripts
+initdbUser: postgres
+initdbPassword: postgres
