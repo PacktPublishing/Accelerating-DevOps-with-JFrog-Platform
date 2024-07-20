@@ -1,0 +1,112 @@
+global:
+  database:
+    initDBCreation: false
+    host: "external-postgresql"
+
+postgresql:
+  enabled: false
+
+artifactory:
+  artifactory:
+    replicaCount: 3
+    persistence:
+      customBinarystoreXmlSecret: custom-binary-store
+    # Require multiple Artifactory pods to run on separate nodes
+    podAntiAffinity:
+      type: "hard"
+    resources:
+      requests:
+        cpu: "2"
+        memory: 10Gi
+      limits:
+        cpu: "14"
+        memory: 12Gi
+    extraEnvironmentVariables:
+      - name: MALLOC_ARENA_MAX
+        value: "8"
+
+  router:
+    resources:
+      requests:
+        cpu: 200m
+        memory: 400Mi
+      limits:
+        cpu: "4"
+        memory: 1Gi
+
+  frontend:
+    resources:
+      requests:
+        cpu: 200m
+        memory: 300Mi
+      limits:
+        cpu: "3"
+        memory: 1Gi
+
+  metadata:
+    resources:
+      requests:
+        cpu: 200m
+        memory: 200Mi
+      limits:
+        cpu: "4"
+        memory: 1Gi
+
+  event:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 50Mi
+      limits:
+        cpu: 500m
+        memory: 250Mi
+
+  observability:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 50Mi
+      limits:
+        cpu: 500m
+        memory: 250Mi
+
+  jflink:
+    resources:
+      requests:
+        cpu: 50m
+        memory: 100Mi
+      limits:
+        cpu: 500m
+        memory: 250Mi
+
+  nginx:
+    replicaCount: 2
+    disableProxyBuffering: true
+    resources:
+      requests:
+        cpu: "1"
+        memory: "500Mi"
+      limits:
+        cpu: "4"
+        memory: "1Gi"
+
+  database:
+      password: "NlTJ9y1RfDMuJZo"
+
+xray:
+  database:
+    password: "Ejn8PynIlu906XE"
+
+distribution:
+  database:
+    password: "wYH5Qi8DfACSvwf"
+
+insight:
+  database:
+    password: "F7FFlKyFDLvMIfU"
+
+pipelines:
+  global:
+    postgresql:
+      host: "external-postgresql"
+      password: "nFbVdOlDJZI74V6"
