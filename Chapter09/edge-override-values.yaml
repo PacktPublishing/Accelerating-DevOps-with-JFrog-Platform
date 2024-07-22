@@ -1,7 +1,4 @@
 artifactory:
-  artifactory:
-    replicator:
-      enabled: true
   ingress:
     enabled: true
     className: nginx
